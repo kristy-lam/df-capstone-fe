@@ -9,6 +9,7 @@ import HomeSec from "./components/HomeSec";
 import LessonsSec from "./components/LessonsSec";
 import LoginSec from "./components/LoginSec";
 import EnqSec from "./components/EnqSec";
+import PageNotFound from "./components/PageNotFound";
 import logo from "/assets/logo.png";
 
 import "./App.css";
@@ -46,6 +47,7 @@ const App = () => {
               <EnqSec isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
             }
           />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
         <Footer />
       </HelmetProvider>

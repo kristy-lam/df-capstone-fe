@@ -7,6 +7,7 @@ import App from "../src/App";
 import LessonsSec from "../src/components/LessonsSec";
 import LoginSec from "../src/components/LoginSec";
 import EnqSec from "../src/components/EnqSec";
+import PageNotFound from "../src/components/PageNotFound";
 
 describe("App tests", () => {
   const renderWithRouter = (ui, { route = "/" } = {}) => {
@@ -64,5 +65,18 @@ describe("App tests", () => {
     );
     // Assert
     expect(screen.getByTestId("enq-sec")).toBeInTheDocument();
+  });
+
+  test("should render PageNotFound at an unknown path", () => {
+    // Act
+    const route = "/unknown";
+    renderWithRouter(
+      <HelmetProvider>
+        <PageNotFound />
+      </HelmetProvider>,
+      { route }
+    );
+    // Assert
+    expect(screen.getByTestId("404-sec")).toBeInTheDocument();
   });
 });
