@@ -1,21 +1,12 @@
-import { useEffect } from "react";
-import { useNavigate, Link, NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Cookies from "js-cookie";
 import logo from "/assets/logo.png";
 
 const Nav = ({ isLoggedIn, setIsLoggedIn }) => {
-  const navigate = useNavigate();
-
   const handleLogout = () => {
     setIsLoggedIn(false);
     Cookies.remove("token");
   };
-
-  useEffect(() => {
-    if (!isLoggedIn) {
-      navigate("/");
-    }
-  }, [isLoggedIn]);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light" data-testid="nav">

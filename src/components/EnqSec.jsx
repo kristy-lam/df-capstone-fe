@@ -1,11 +1,13 @@
 import { Helmet } from "react-helmet-async";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import EnqViewForm from "./EnqViewForm";
 import { getEnqsService } from "../services/enqWithAuth.service.js";
 import SuccessDiv from "./SuccessDiv.jsx";
 import ErrorDiv from "./ErrorDiv.jsx";
 
-const EnqSec = () => {
+const EnqSec = ({ isLoggedIn }) => {
+  const navigate = useNavigate();
   const [allEnqs, setAllEnqs] = useState(null);
   const [getFailMsg, setGetFailMsg] = useState("");
   const [deleteMsg, setDeleteMsg] = useState("");
@@ -13,7 +15,7 @@ const EnqSec = () => {
   const fetchEnqs = async () => {
     const result = await getEnqsService();
     if (result instanceof Error) {
-      setGetFailMsg(result.message);
+      setGetFailMsg(result.response.data.message);
     } else {
       setAllEnqs(result);
     }
@@ -22,6 +24,12 @@ const EnqSec = () => {
   useEffect(() => {
     fetchEnqs();
   }, []);
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/");
+    }
+  }, [isLoggedIn]);
 
   return (
     <>

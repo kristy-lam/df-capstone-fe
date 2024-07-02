@@ -19,10 +19,8 @@ const PageNotFound = () => {
         <meta name="Page Not Found" content="Welcome to Driving with Kristy!" />
       </Helmet>
       <div className="main-sec" data-testid="404-sec">
-        <h1>
-          Oops... This page doesn't exist... We will take you back to Driving
-          with Kristy now.
-        </h1>
+        <h2>Oops... This page doesn't exist...</h2>
+        <h2>We will take you back to Driving with Kristy now &#x1F697;</h2>
       </div>
     </>
   );

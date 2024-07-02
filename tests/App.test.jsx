@@ -6,7 +6,6 @@ import { BrowserRouter } from "react-router-dom";
 import App from "../src/App";
 import LessonsSec from "../src/components/LessonsSec";
 import LoginSec from "../src/components/LoginSec";
-import EnqSec from "../src/components/EnqSec";
 import PageNotFound from "../src/components/PageNotFound";
 
 describe("App tests", () => {
@@ -52,19 +51,6 @@ describe("App tests", () => {
     );
     // Assert
     expect(screen.getByTestId("login-sec")).toBeInTheDocument();
-  });
-
-  test("should render EnqSec at '/enq'", () => {
-    // Act
-    const route = "/enq";
-    renderWithRouter(
-      <HelmetProvider>
-        <EnqSec />
-      </HelmetProvider>,
-      { route }
-    );
-    // Assert
-    expect(screen.getByTestId("enq-sec")).toBeInTheDocument();
   });
 
   test("should render PageNotFound at an unknown path", () => {

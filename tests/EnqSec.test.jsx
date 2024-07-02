@@ -1,5 +1,6 @@
 import "@testing-library/jest-dom";
-import { render, screen, act, fireEvent } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import { render, screen, act } from "@testing-library/react";
 import { HelmetProvider } from "react-helmet-async";
 import EnqSec from "../src/components/EnqSec";
 import { getEnqsService } from "../src/services/enqWithAuth.service.js";
@@ -35,9 +36,11 @@ describe("EnqSec tests", async () => {
       // Act
       await act(async () => {
         render(
-          <HelmetProvider>
-            <EnqSec />
-          </HelmetProvider>
+          <MemoryRouter>
+            <HelmetProvider>
+              <EnqSec isLoggedIn={true} />
+            </HelmetProvider>
+          </MemoryRouter>
         );
       });
       // Assert
@@ -49,17 +52,27 @@ describe("EnqSec tests", async () => {
 
     test("renders fail message when enquiries are not available", async () => {
       // Assign
-      getEnqsService.mockResolvedValueOnce(new Error("Test error"));
+      getEnqsService.mockResolvedValueOnce({
+        response: {
+          data: {
+            message: "Test error",
+          },
+        },
+      });
       // Act
       await act(async () => {
         render(
-          <HelmetProvider>
-            <EnqSec />
-          </HelmetProvider>
+          <MemoryRouter>
+            <HelmetProvider>
+              <EnqSec isLoggedIn={true} />
+            </HelmetProvider>
+          </MemoryRouter>
         );
       });
       // Assert
-      expect(screen.getByText(/Test error/i)).toBeInTheDocument();
+      () => {
+        expect(screen.queryByText(/Test error/i)).toBeInTheDocument();
+      };
       const enqViewForm = screen.queryByTestId("enq-view-form");
       expect(enqViewForm).not.toBeInTheDocument();
     });

@@ -41,12 +41,7 @@ const App = () => {
               <LoginSec isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
             }
           />
-          <Route
-            path="/enq"
-            element={
-              <EnqSec isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-            }
-          />
+          <Route path="/enq" element={<EnqSec isLoggedIn={isLoggedIn} />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
         <Footer />
