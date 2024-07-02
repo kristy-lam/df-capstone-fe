@@ -6,7 +6,7 @@ import { updateEnqService } from "../src/services/enqWithAuth.service.js";
 import EnqViewForm from "../src/components/EnqViewForm";
 import { act } from "react";
 
-describe("EnqAddForm tests", () => {
+describe("EnqUpdateForm tests", () => {
   const testEnq = {
     _id: "testId",
     preferredName: "Alex",

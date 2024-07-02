@@ -142,7 +142,7 @@ describe("Validator tests", () => {
   });
 
   describe("validatePostcode tests", () => {
-    it("should return true when the postcode is valid (5 alphanumeric characters with a space between outward and inward codes", () => {
+    it("should return true when the postcode is valid (5 alphanumeric characters with a space between outward and inward codes)", () => {
       // Assign
       const testPostcode = "A1 2BC";
       // Act
@@ -151,7 +151,7 @@ describe("Validator tests", () => {
       expect(result).to.equal(true);
     });
 
-    it("should return true when the postcode is valid (5 alphanumeric characters without a space between outward and inward codes", () => {
+    it("should return true when the postcode is valid (5 alphanumeric characters without a space between outward and inward codes)", () => {
       // Assign
       const testPostcode = "A12BC";
       // Act
@@ -160,7 +160,7 @@ describe("Validator tests", () => {
       expect(result).to.equal(true);
     });
 
-    it("should return true when the postcode is valid (6 alphanumeric characters with a space between outward and inward codes", () => {
+    it("should return true when the postcode is valid (6 alphanumeric characters with a space between outward and inward codes)", () => {
       // Assign
       const testPostcode = "A12 3BC";
       // Act
@@ -169,7 +169,7 @@ describe("Validator tests", () => {
       expect(result).to.equal(true);
     });
 
-    it("should return true when the postcode is valid (6 alphanumeric characters without a space between outward and inward codes", () => {
+    it("should return true when the postcode is valid (6 alphanumeric characters without a space between outward and inward codes)", () => {
       // Assign
       const testPostcode = "A123BC";
       // Act
@@ -178,7 +178,7 @@ describe("Validator tests", () => {
       expect(result).to.equal(true);
     });
 
-    it("should return true when the postcode is valid (7 alphanumeric characters with a space between outward and inward codes", () => {
+    it("should return true when the postcode is valid (7 alphanumeric characters with a space between outward and inward codes)", () => {
       // Assign
       const testPostcode = "AB1C 4DE";
       // Act
@@ -187,7 +187,7 @@ describe("Validator tests", () => {
       expect(result).to.equal(true);
     });
 
-    it("should return true when the postcode is valid (7 alphanumeric characters without a space between outward and inward codes", () => {
+    it("should return true when the postcode is valid (7 alphanumeric characters without a space between outward and inward codes)", () => {
       // Assign
       const testPostcode = "AB1C4DE";
       // Act
