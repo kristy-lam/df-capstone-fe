@@ -1,6 +1,7 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
+import userEvent from "@testing-library/user-event";
 import EnqViewForm from "../src/components/EnqViewForm";
 
 describe("EnqViewForm tests", () => {
@@ -73,5 +74,30 @@ describe("EnqViewForm tests", () => {
     });
     // Assert
     expect(screen.queryByText(expectedText)).toBeInTheDocument();
+  });
+
+  test("opens update modal when update progress button is clicked", async () => {
+    // Arrange
+    render(<EnqViewForm enq={testEnq1} index={0} />, {
+      wrapper: BrowserRouter,
+    });
+    //Act
+    const updateButton = screen.getByText("Update Progress");
+    await userEvent.click(updateButton);
+    const repliedCheckbox = screen.getByLabelText("Replied?");
+    // Assert
+    expect(repliedCheckbox).toBeInTheDocument();
+  });
+
+  test("opens delete modal when delete button is clicked", async () => {
+    // Arrange
+    render(<EnqViewForm enq={testEnq1} index={0} />, {
+      wrapper: BrowserRouter,
+    });
+    //Act
+    const deleteButton = screen.getByText("Delete");
+    await userEvent.click(deleteButton);
+    // Assert
+    expect(screen.getByText("CONFIRM DELETE")).toBeInTheDocument();
   });
 });

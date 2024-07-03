@@ -21,6 +21,7 @@ const EnqDeleteModal = ({ enq, index, fetchEnqs, setDeleteMsg }) => {
     <div
       className="modal fade"
       id={`delete-modal-${index}`}
+      data-testid={`test-delete-modal-${index}`}
       tabIndex="-1"
       aria-labelledby={`delete-modal-${index}-label`}
       aria-hidden="true"

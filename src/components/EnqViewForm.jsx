@@ -19,6 +19,7 @@ const EnqViewForm = ({ enq, index, fetchEnqs, setDeleteMsg }) => {
   const [viewReplyDate, setViewReplyDate] = useState(enq.replyDate || "");
   const [viewReplyMsg, setViewReplyMsg] = useState(enq.replyMessage || "");
   const [updateMsg, setUpdateMsg] = useState("");
+  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     setViewEnqId(enq._id || "");
@@ -26,8 +27,8 @@ const EnqViewForm = ({ enq, index, fetchEnqs, setDeleteMsg }) => {
     setViewMobile(enq.mobile || "");
     setViewPostcode(enq.postcode || "");
     setViewEmail(enq.email || "");
-    setViewTest(enq.testPreparation || false);
-    setViewSkills(enq.skillsImprovement || false);
+    setViewTest(enq.testPreparation);
+    setViewSkills(enq.skillsImprovement);
     setViewEnqMsg(enq.enqMessage || "");
     setViewEnqDate(enq.enqDate || "");
     setViewReplyStatus(enq.replied || false);
@@ -36,15 +37,8 @@ const EnqViewForm = ({ enq, index, fetchEnqs, setDeleteMsg }) => {
     setViewReplyMsg(enq.replyMessage || "");
   }, [enq]);
 
-  const expandCollapsible = (event) => {
-    const button = event.target;
-    button.classList.toggle("active");
-    const content = button.nextElementSibling;
-    if (content.style.display === "block") {
-      content.style.display = "none";
-    } else {
-      content.style.display = "block";
-    }
+  const toggleCollapsible = () => {
+    setIsActive(!isActive);
   };
 
   return (
@@ -73,11 +67,11 @@ const EnqViewForm = ({ enq, index, fetchEnqs, setDeleteMsg }) => {
         type="button"
         name="expand-enq"
         className="collapsible"
-        onClick={expandCollapsible}
+        onClick={toggleCollapsible}
       >
         +
       </button>
-      <div className="content" style={{ display: "none" }}>
+      <div className="content" style={{ display: isActive ? "block" : "none" }}>
         <div className="mb-3 w-100">
           <label htmlFor="reply-message" className="form-label">
             Reply message
