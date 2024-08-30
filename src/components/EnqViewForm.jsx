@@ -4,6 +4,7 @@ import EnqDeleteModal from "./EnqDeleteModal";
 import ErrorDiv from "./ErrorDiv.jsx";
 import SuccessDiv from "./SuccessDiv.jsx";
 import { formatDate } from "../utils/dateFormatter.js";
+import MapDisplay from "./MapDisplay.jsx";
 
 const EnqViewForm = ({ enq, index, fetchEnqs, setDeleteMsg }) => {
   const [viewEnqId, setViewEnqId] = useState(enq._id || "");
@@ -136,6 +137,7 @@ const EnqViewForm = ({ enq, index, fetchEnqs, setDeleteMsg }) => {
               value={viewEmail}
             />
           </div>
+          <MapDisplay viewPostcode={viewPostcode} />
         </div>
         <div className="row mb-2">
           <div className="col-12 col-md-6 mb-2">
