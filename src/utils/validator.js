@@ -41,3 +41,8 @@ export const validateReplyStatus = (replyDate, replyStatus) => {
     return !replyStatus ? true : false;
   }
 };
+
+export const validateDrivingLicenceNum = (drivingLicenceNum) => {
+  const regex = /^[A-Z0-9]{16}$/;
+  return regex.test(drivingLicenceNum);
+};

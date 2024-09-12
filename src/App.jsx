@@ -9,6 +9,7 @@ import HomeSec from "./components/HomeSec";
 import LessonsSec from "./components/LessonsSec";
 import LoginSec from "./components/LoginSec";
 import EnqSec from "./components/EnqSec";
+import CustomerSec from "./components/CustomerSec";
 import PageNotFound from "./components/PageNotFound";
 import logo from "/assets/logo.png";
 
@@ -42,6 +43,10 @@ const App = () => {
             }
           />
           <Route path="/enq" element={<EnqSec isLoggedIn={isLoggedIn} />} />
+          <Route
+            path="/customers"
+            element={<CustomerSec isLoggedIn={isLoggedIn} />}
+          />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
         <Footer />

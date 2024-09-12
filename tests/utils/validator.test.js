@@ -6,6 +6,7 @@ import {
   validateTestAndSkills,
   validateReplyDate,
   validateReplyStatus,
+  validateDrivingLicenceNum,
 } from "../../src/utils/validator.js";
 
 describe("Validator tests", () => {
@@ -420,6 +421,44 @@ describe("Validator tests", () => {
       const testReplyStatus = true;
       // Act
       const result = validateReplyStatus(testReplyDate, testReplyStatus);
+      // Assert
+      expect(result).to.equal(false);
+    });
+  });
+
+  describe("validateDrivingLicenceNum tests", () => {
+    it("should return true when the driving licence number is 16 characters long", () => {
+      // Assign
+      const testNum = "1234567890123456";
+      // Act
+      const result = validateDrivingLicenceNum(testNum);
+      // Assert
+      expect(result).to.equal(true);
+    });
+
+    it("should return false when the password is empty", () => {
+      // Assign
+      const testNum = "";
+      // Act
+      const result = validateDrivingLicenceNum(testNum);
+      // Assert
+      expect(result).to.equal(false);
+    });
+
+    it("should return false when the password has fewer than 16 characters", () => {
+      // Assign
+      const testNum = "123456789012345";
+      // Act
+      const result = validateDrivingLicenceNum(testNum);
+      // Assert
+      expect(result).to.equal(false);
+    });
+
+    it("should return false when the password has more than 16 characters", () => {
+      // Assign
+      const testNum = "12345678901234567";
+      // Act
+      const result = validateDrivingLicenceNum(testNum);
       // Assert
       expect(result).to.equal(false);
     });
