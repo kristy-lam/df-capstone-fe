@@ -6,7 +6,7 @@ import {
   updateCustomerService,
   deleteCustomerService,
 } from "../../src/services/customers.service.js";
-import testCustomer from "./data/testCustomer.js";
+import testCustomer from "../../tests/data/testCustomer.js";
 import { describe } from "vitest";
 
 describe("Customer Services Tests (Requiring Authentication)", () => {
