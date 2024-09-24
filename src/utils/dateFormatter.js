@@ -9,6 +9,10 @@ export const shortenDate = (dateStr) => {
 };
 
 export const formatDate = (dateStr) => {
-  const isoDate = new Date(dateStr);
-  return isoDate.toLocaleDateString("en-GB"); // dd/mm/yyyy
+  if (dateStr) {
+    const isoDate = new Date(dateStr);
+    return isoDate.toLocaleDateString("en-GB"); // dd/mm/yyyy
+  } else {
+    return "";
+  }
 };

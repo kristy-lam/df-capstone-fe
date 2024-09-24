@@ -62,6 +62,18 @@ const Nav = ({ isLoggedIn, setIsLoggedIn }) => {
                 </NavLink>
               </li>
             )}
+            {isLoggedIn && (
+              <li className="nav-item">
+                <NavLink
+                  to="/customers"
+                  className={({ isActive }) =>
+                    "nav-link" + (isActive ? " selected" : "")
+                  }
+                >
+                  Manage Customers
+                </NavLink>
+              </li>
+            )}
           </ul>
           {!isLoggedIn ? (
             <Link to="/login" className="btn d-flex fs-5">
